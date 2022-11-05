@@ -3,10 +3,14 @@ spring:
   cloud:
     config:
       server:
+      server:
         git:
-          uri: https://github.com/spring-petclinic/spring-petclinic-microservices-config
-          default-label: main
+          uri: https://github.com/kbtanvir1/spring-petclinic-microservices.git
+          
+        # git:
+        #   uri: https://github.com/spring-petclinic/spring-petclinic-microservices-config
+        #   default-label: main
         # Use the File System Backend to avoid git pulling. Enable "native" profile in the Config Server.
-        native:
-          searchLocations: file:///${GIT_REPO}
+        # native:
+        #   searchLocations: file://home/kb/spring-petclinic-microservices/spring-petclinic-config-server
 
