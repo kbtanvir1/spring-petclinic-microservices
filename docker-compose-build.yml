@@ -1,0 +1,59 @@
+version: '2'
+services:
+  api-gateway:
+    build: spring-petclinic-api-gateway
+    ports:
+     - "8080:8080"
+    links:
+      - config-server
+      - visits-service 
+      - discovery-server
+      - customers-service
+      - visits-service
+      - vets-service
+      - admin-server
+      - grafana-server
+      - tracing-server
+
+
+
+
+  config-server:
+    build: spring-petclinic-config-server
+    ports:
+     - "8888:8888"
+  discovery-server:
+    build: spring-petclinic-discovery-server
+    ports:
+     - "8761:8761"
+
+  customers-service:
+    build: spring-petclinic-customers-service
+    ports:
+     - "8081:8081"
+  
+  visits-service:
+    build: spring-petclinic-visits-service
+    ports:
+     - "8082:8082"
+
+  vets-service:
+    build: spring-petclinic-vets-service
+    ports: "8083:8083"
+
+  tracing-server:
+    build: openzipkin/zipkin
+    ports: 
+    - "9411:9411"
+
+  admin-server:
+    build: spring-petclinic-admin-server
+    ports:
+     - "9090:9090"
+
+  ## Grafana / Prometheus
+
+  grafana-server:
+    build: ./docker/grafana
+    ports:
+    - "3000:3000"

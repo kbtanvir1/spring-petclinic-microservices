@@ -6,9 +6,9 @@ target/
 .java-version
 
 # Eclipse
-.settings/
-.classpath
-.project
+# .settings/
+# .classpath
+# .project
 
 # IntelliJ IDEA
 .idea
